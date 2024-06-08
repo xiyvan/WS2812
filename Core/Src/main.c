@@ -102,7 +102,7 @@ int main(void)
     WS2812_Change(&display_main);
     Display_Show(&display_main);
 
-		HAL_Delay(15);
+		HAL_Delay(50);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
