@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F407xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../bsp</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../bsp;..\算法</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -630,6 +630,16 @@
               <FileName>bsp_stringTobuff.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\bsp\bsp_stringTobuff.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>算法</GroupName>
+          <Files>
+            <File>
+              <FileName>Z_math.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\算法\Z_math.c</FilePath>
             </File>
           </Files>
         </Group>

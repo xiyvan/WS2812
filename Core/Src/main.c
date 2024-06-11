@@ -98,11 +98,11 @@ int main(void)
 
   while (1)
   {
-    xiaoguo(&display_main);
+    blink_effect(&display_main);
     WS2812_Change(&display_main);
     Display_Show(&display_main);
 
-		HAL_Delay(50);
+		HAL_Delay(70);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

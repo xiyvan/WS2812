@@ -9,6 +9,7 @@
                 "d:\\f4_ADC_TEST\\WS2812\\Drivers\\CMSIS\\Device\\ST\\STM32F4xx\\Include",
                 "d:\\f4_ADC_TEST\\WS2812\\Drivers\\CMSIS\\Include",
                 "d:\\f4_ADC_TEST\\WS2812\\bsp",
+                "d:\\f4_ADC_TEST\\WS2812\\算法",
                 "d:\\f4_ADC_TEST\\WS2812\\MDK-ARM",
                 "d:\\f4_ADC_TEST\\WS2812\\Core\\Src",
                 "d:\\f4_ADC_TEST\\WS2812\\Drivers\\STM32F4xx_HAL_Driver\\Src"

@@ -30,3 +30,4 @@ ws2812\bsp_stringtobuff.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr
 ws2812\bsp_stringtobuff.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
 ws2812\bsp_stringtobuff.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
 ws2812\bsp_stringtobuff.o: ..\bsp\bsp_ws2812.h
+ws2812\bsp_stringtobuff.o: ..\算法\Z_math.h
