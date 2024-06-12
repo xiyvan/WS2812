@@ -29,7 +29,13 @@ ws2812\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h
 ws2812\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h
 ws2812\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
 ws2812\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
+ws2812\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
+ws2812\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 ws2812\main.o: ../Core/Inc/spi.h
+ws2812\main.o: ../Core/Inc/tim.h
 ws2812\main.o: ../Core/Inc/gpio.h
+ws2812\main.o: ../APP/Task_create.h
+ws2812\main.o: ../APP/Display_task.h
 ws2812\main.o: ../bsp/bsp_ws2812.h
-ws2812\main.o: ../bsp/bsp_stringTobuff.h
+ws2812\main.o: ../bsp/bsp_Animation.h
+ws2812\main.o: ../bsp/bsp_PixelOperation.h

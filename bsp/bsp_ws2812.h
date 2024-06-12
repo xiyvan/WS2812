@@ -15,8 +15,8 @@
 
 
 
-#define WS2812_LowLevel    0xE0     // 0Ты
-#define WS2812_HighLevel   0xF0     // 1Ты
+#define WS2812_LowLevel    0xC0     // 0Ты
+#define WS2812_HighLevel   0xFC     // 1Ты
 
 
 typedef struct 

@@ -1,18 +1,10 @@
 
-#include "bsp_stringTobuff.h"
-#include "Z_math.h"
+#include "bsp_Animation.h"
 
 
 
-void display_char(WS2812_msg_t* data,uint8_t* buf,uint8_t wei)
-{
-    
-}
-
-
+/// 旋转拖尾用
 uint8_t last_num_l[4][3];
-
-
 
 /// @brief 旋转拖尾效果
 /// @param data 
@@ -55,7 +47,7 @@ void xiaoguo(Display_msg_t* data)
             g -= 20;
         }
         r += 20;
-    } 
+    }
     if(r >= 200)
     {
         g += 20;
@@ -73,8 +65,7 @@ void xiaoguo(Display_msg_t* data)
         b += 20;
     }
 
-
-    Ws2812_Set(data,1,num,r,g,b);
+    Ws2812_Set(data,1,num,200,0,0);
     Ws2812_Set(data,1,last_num,last_num_l[0][0] * 0.7f,last_num_l[0][1] * 0.7f,last_num_l[0][2] * 0.7f);
     Ws2812_Set(data,1,last_num2,last_num_l[1][0] * 0.5f,last_num_l[1][1] * 0.5f,last_num_l[1][2] * 0.5f);
     Ws2812_Set(data,1,last_num3,last_num_l[2][0] * 0.3f,last_num_l[2][1] * 0.3f,last_num_l[2][2] * 0.3f);
@@ -97,6 +88,61 @@ void blink_effect(Display_msg_t* data)
     static uint8_t r = 0,g = 0,b = 200;
 
     Ws2812_Set(data,1,num,r,g,b);
+
+
+    if(b >= 200)
+    {
+        if(g >= 1)
+        {
+            g -= 2;
+        }
+        r += 2;
+    } 
+    if(r >= 200)
+    {
+        g += 2;
+        if(b >= 1)
+        {
+            b -= 2;
+        }
+    } 
+    if(g >= 200) 
+    {
+        if(r >= 1)
+        {
+            r -= 2;
+        }
+        b += 2;
+    }
+
+    num ++;
+    if(num > 12) num = 1;
+    else if(num == 1) num = 0;
+
+}
+
+
+
+
+
+/// @brief 坠落效果函数（圆形 从顶上发出到地下结束）
+/// @param data 
+void Falling_effect(Display_msg_t* data)
+{
+    static uint8_t num = 1;
+    static uint8_t num_ = 13;
+    static uint8_t state = 1;
+    static uint8_t r = 0,g = 0,b = 200;
+
+    for(int i = 1;i < 13;i++)
+    {
+        Ws2812_Set(data,1,i,0,0,0);
+    }
+
+    Ws2812_Set(data,1,num,r,g,b);
+    Ws2812_Set(data,1,num_,r,g,b);
+
+
 
     if(b >= 200)
     {
@@ -123,85 +169,19 @@ void blink_effect(Display_msg_t* data)
         b += 10;
     }
 
-    num ++;
-    if(num > 12) num = 1;
-}
 
-
-
-/// @brief 矩形填充
-/// @param date 页面数据
-/// @param x 左上角点x坐标
-/// @param y 左上角点y坐标
-/// @param x_end 右下角点x坐标
-/// @param y_end 右下角点y坐标
-/// @param rgb 填充颜色
-void write_rectangle_full(Display_msg_t* date,uint16_t x,uint16_t y,uint16_t x_end,uint16_t y_end,WS2812_msg_t* rgb)
-{
-    // 判断输入的数据合法性
-    if((x_end - x <= 0) || ((y_end - y <= 0)))
+    if(state == 1)
     {
-        return ;
+        num_ --;
+        num ++;
+    }
+    else if(state == 0)
+    {
+        num_ ++;
+        num --;
     }
 
-    // 判断输入值是否超过边界
-    if(x_end > RGB_KEY) x_end = RGB_KEY;
-    if(y_end > RGB_BAR) y_end = RGB_BAR;
-
-
-    for(uint8_t i = x;i <= x_end;i ++)
-    {
-        for(uint8_t j = y;j <= y_end;j++)
-        {
-            Ws2812_Set(date,i,j,rgb->R,rgb->G,rgb->B);
-        }
-    }
-}
-
-
-
-/// @brief 矩形框（不填充）
-/// @param date 页面数据
-/// @param x 左上角点x坐标
-/// @param y 左上角点y坐标
-/// @param x_end 右下角点x坐标
-/// @param y_end 右下角点y坐标
-/// @param rgb 填充颜色
-/// @param wide 线宽像素
-void write_rectangle_no(Display_msg_t* date,uint16_t x,uint16_t y,uint16_t x_end,uint16_t y_end,WS2812_msg_t* rgb,uint16_t wide)
-{
-    // 判断输入的数据合法性
-    if((x_end - x <= 0) || ((y_end - y <= 0)))
-    {
-        return ;
-    }
-
-    // 判断输入值是否超过边界
-    if(x_end > RGB_KEY) x_end = RGB_KEY;
-    if(y_end > RGB_BAR) y_end = RGB_BAR;
-    if(wide == 0) wide = 1;
-
-    // 上边框
-    write_rectangle_full(date,x,y,x_end,(y+wide),rgb);
-    // 下边框
-    write_rectangle_full(date,x,(y_end - wide),x_end,y_end,rgb);
-    // 左边框
-    write_rectangle_full(date,x,y,(x+wide),y_end,rgb);
-    // 右边框
-    write_rectangle_full(date,(x - wide),y,x_end,y_end,rgb);
-}
-
-
-
-/// @brief 画圆形
-/// @param date 信息结构体
-/// @param x 圆心x坐标
-/// @param y 圆心y坐标
-/// @param r 圆的版ing
-/// @param rgb 颜色
-void write_circular_no(Display_msg_t* date,uint16_t x,uint16_t y,uint16_t r,WS2812_msg_t* rgb)
-{
-
-
+    if(num > 6) state = 0;
+    else if(num == 1) state = 1;
 }
 

@@ -18,7 +18,6 @@ typedef struct
 
 
 void display_char(WS2812_msg_t* data,uint8_t* buf,uint8_t wei);
-void xiaoguo(Display_msg_t* data);
-void blink_effect(Display_msg_t* data);
+
 
 #endif

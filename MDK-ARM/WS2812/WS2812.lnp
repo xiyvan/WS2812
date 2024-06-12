@@ -1,8 +1,14 @@
 --cpu=Cortex-M4.fp.sp
+"ws2812\display_task.o"
+"ws2812\task_create.o"
+"ws2812\bsp_ws2812.o"
+"ws2812\bsp_pixeloperation.o"
+"ws2812\bsp_animation.o"
 "ws2812\startup_stm32f407xx.o"
 "ws2812\main.o"
 "ws2812\gpio.o"
 "ws2812\spi.o"
+"ws2812\tim.o"
 "ws2812\stm32f4xx_it.o"
 "ws2812\stm32f4xx_hal_msp.o"
 "ws2812\stm32f4xx_hal_spi.o"
@@ -22,9 +28,6 @@
 "ws2812\stm32f4xx_hal_tim.o"
 "ws2812\stm32f4xx_hal_tim_ex.o"
 "ws2812\system_stm32f4xx.o"
-"ws2812\bsp_ws2812.o"
-"ws2812\bsp_stringtobuff.o"
-"ws2812\z_math.o"
 --strict --scatter "WS2812\WS2812.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
