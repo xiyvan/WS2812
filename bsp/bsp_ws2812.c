@@ -46,6 +46,7 @@ void WS2812_Change(Display_msg_t* data)
             j++;
         }
     }
+
 }
 
 
@@ -53,13 +54,8 @@ void WS2812_Change(Display_msg_t* data)
 /// @param data 屏显信息结构体指针
 void Display_Show(Display_msg_t* data)
 {
-    unsigned char res = 0;
     while (hspi1.State != HAL_SPI_STATE_READY);
-    HAL_SPI_Transmit(&hspi1,data->buff, RGB_NUM * 24, 0xFFFF);
-    for (int i = 0; i < 100; i++)
-    {
-        HAL_SPI_Transmit(&hspi1, &res, 1, 0xFFFF);
-    }
+    HAL_SPI_Transmit_DMA(&hspi1,data->buff,RGB_NUM * 24);
 }
 
 

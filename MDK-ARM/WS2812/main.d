@@ -31,6 +31,7 @@ ws2812\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
 ws2812\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
 ws2812\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 ws2812\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
+ws2812\main.o: ../Core/Inc/dma.h
 ws2812\main.o: ../Core/Inc/spi.h
 ws2812\main.o: ../Core/Inc/tim.h
 ws2812\main.o: ../Core/Inc/gpio.h
