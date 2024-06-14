@@ -33,4 +33,6 @@ ws2812\display_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
 ws2812\display_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 ws2812\display_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 ws2812\display_task.o: ../bsp/bsp_Animation.h
+ws2812\display_task.o: ../bsp/bsp_ColorMixer.h
 ws2812\display_task.o: ../bsp/bsp_PixelOperation.h
+ws2812\display_task.o: ../alli/Z_math.h

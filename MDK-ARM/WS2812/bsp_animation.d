@@ -32,3 +32,6 @@ ws2812\bsp_animation.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex
 ws2812\bsp_animation.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
 ws2812\bsp_animation.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 ws2812\bsp_animation.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
+ws2812\bsp_animation.o: ..\bsp\bsp_ColorMixer.h
+ws2812\bsp_animation.o: ..\bsp\bsp_PixelOperation.h
+ws2812\bsp_animation.o: D:\keil 5\ARM\ARMCC\Bin\..\include\string.h

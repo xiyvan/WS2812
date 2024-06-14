@@ -14,7 +14,7 @@ extern TIM_HandleTypeDef htim3;
 
 ///************************************** 任务专属变量定义  ******************************* */
 
-volatile uint8_t task_delay50ms = 0;
+volatile uint16_t task_delay50ms = 0;
 
 
 ///********************************************* 函数声明  ***********************************/
@@ -57,7 +57,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 /// @brief 50ms执行一次的任务
 static void task_50ms(void)
 {
-    if(task_delay50ms >= 50)
+    if(task_delay50ms >= 500)
     {
         display_show();
         task_delay50ms = 0;

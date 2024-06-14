@@ -414,10 +414,27 @@
               <FileType>1</FileType>
               <FilePath>..\bsp\bsp_Animation.c</FilePath>
             </File>
+            <File>
+              <FileName>bsp_base.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\bsp\bsp_base.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_ColorMixer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\bsp\bsp_ColorMixer.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>alig</GroupName>
+          <Files>
+            <File>
+              <FileName>Z_math.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\alli\Z_math.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>Application/MDK-ARM</GroupName>

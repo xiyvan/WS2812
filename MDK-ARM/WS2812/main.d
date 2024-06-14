@@ -39,4 +39,5 @@ ws2812\main.o: ../APP/Task_create.h
 ws2812\main.o: ../APP/Display_task.h
 ws2812\main.o: ../bsp/bsp_ws2812.h
 ws2812\main.o: ../bsp/bsp_Animation.h
+ws2812\main.o: ../bsp/bsp_ColorMixer.h
 ws2812\main.o: ../bsp/bsp_PixelOperation.h

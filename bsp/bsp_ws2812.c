@@ -17,15 +17,12 @@ Display_msg_t display_main;
 /// @param R 红
 /// @param G 绿
 /// @param B 蓝
-void Ws2812_Set(Display_msg_t* data,unsigned char key,unsigned char bar,unsigned char R,unsigned char G,unsigned char B)
+void Ws2812_Set(Picture_msg_t* data,unsigned char key,unsigned char bar,unsigned char R,unsigned char G,unsigned char B)
 {
-    data->date[key-1][bar-1].R = R;
-    data->date[key-1][bar-1].G = G;
-    data->date[key-1][bar-1].B = B;
+    data->rgb[key-1][bar-1].R = R;
+    data->rgb[key-1][bar-1].G = G;
+    data->rgb[key-1][bar-1].B = B;
 }
-
-
-
 
 
 /// @brief 显示转换 由灯珠颜色转换到缓存
@@ -46,8 +43,28 @@ void WS2812_Change(Display_msg_t* data)
             j++;
         }
     }
-
 }
+
+/// @brief 显示转换 由灯珠颜色转换到缓存
+void WS2812_Change_free(unsigned char* data,WS2812_msg_t ws[RGB_KEY][RGB_BAR])
+{
+    unsigned int j = 0;
+
+    for(int k = 0;k < RGB_KEY;k++)
+    {
+        for(int b = 0;b < RGB_BAR;b++)
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                data[(j * 24) + 7 - i]  = (((ws[k][b].G >>i)&0x01) ? WS2812_HighLevel : WS2812_LowLevel)>>1;
+                data[(j * 24) + 15 - i] = (((ws[k][b].R >>i)&0x01) ? WS2812_HighLevel : WS2812_LowLevel)>>1;
+                data[(j * 24) + 23 - i] = (((ws[k][b].B >>i)&0x01) ? WS2812_HighLevel : WS2812_LowLevel)>>1;
+            }
+            j++;
+        }
+    }
+}
+
 
 
 /// @brief 显示推送

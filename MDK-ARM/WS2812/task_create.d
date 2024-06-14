@@ -34,4 +34,5 @@ ws2812\task_create.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 ws2812\task_create.o: ..\APP\Display_task.h
 ws2812\task_create.o: ../bsp/bsp_ws2812.h
 ws2812\task_create.o: ../bsp/bsp_Animation.h
+ws2812\task_create.o: ../bsp/bsp_ColorMixer.h
 ws2812\task_create.o: ../bsp/bsp_PixelOperation.h
