@@ -57,7 +57,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 /// @brief 50ms执行一次的任务
 static void task_50ms(void)
 {
-    if(task_delay50ms >= 500)
+    if(task_delay50ms >= 170)
     {
         display_show();
         task_delay50ms = 0;

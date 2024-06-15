@@ -3,6 +3,8 @@
 #include "bsp_ws2812.h"
 #include "Z_math.h"
 #include "bsp_ColorMixer.h"
+#include "bsp_base.h"
+#include "string.h"
 
 extern Display_msg_t display_main;
 
@@ -11,36 +13,45 @@ extern Display_msg_t display_main;
 volatile uint8_t task_50ms = 0;
 
 
-extern Picture_msg_t Animat_main;;
 Picture_msg_t one;
 Picture_msg_t two;
 Picture_msg_t out;
+Animation_msg_t animat_main;
+Animation_msg_t animat_arro;
 
 WS2812_msg_t test;
 WS2812_msg_t ttwo;
 WS2812_msg_t back;
 
+char T = '0';
+
 void display_show(void)
 {
     one.layer_num = 1;
     one.trans = 50;
-    two.layer_num = 2;
-    two.trans = 50;
-    test.B = 20;
-    test.R = 60;
-    test.G = 5;
+    animat_main.date.trans = 50;
+    animat_main.date.layer_num = 1;
+    animat_arro.date.layer_num = 2;
+    animat_arro.date.trans = 100;
     back.R = 0;
     back.G = 0;
     back.B = 0;
-    ttwo.R = 20;
-    ttwo.G = 40;
-    ttwo.B = 60;
-    write_rectangle_no(&one,1,1,7,7,&test,0);       // 画图形
-    write_rectangle_full(&two,2,2,5,5,&ttwo);
-    slide_right_effect(one.rgb);                    // 添加动作
-    ColorMixer_two(&Animat_main,&two,&back,&out);        // 将动作混色
+
+    Write_OneDigitalTube(&one,20,100,10,T,2,1);
+    Write_arrow(&two,50,10,17,ARROW_DIRECTION_LEFT);   // 画一个箭头
+    slide_effect(two.rgb,&animat_arro,SLIDE_EFFECT_STATE_LEFT);
+    slide_effect(one.rgb,&animat_main,SLIDE_EFFECT_STATE_DOWN);            // 添加动作
+    if(animat_main.state == 1)
+    {
+        T ++;
+        // 设为未循环完
+        animat_main.state = 0;
+    }
+    if(T > '9') T = '0';
+    ColorMixer_two_free(&animat_arro.date,&animat_main.date,&out,&back);
     WS2812_Change_free(display_main.buff,out.rgb);
     Display_Show(&display_main);
+    memset(&one,0,sizeof(one));
 }
 
 

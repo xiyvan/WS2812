@@ -7,6 +7,6 @@
 
 
 void ColorMixer_two(Picture_msg_t* date1,Picture_msg_t* date2,WS2812_msg_t* back,Picture_msg_t* out);
-
+void ColorMixer_two_free(Picture_msg_t* date1,Picture_msg_t* date2,Picture_msg_t* out,WS2812_msg_t* back);
 
 #endif

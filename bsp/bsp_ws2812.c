@@ -26,26 +26,6 @@ void Ws2812_Set(Picture_msg_t* data,unsigned char key,unsigned char bar,unsigned
 
 
 /// @brief 显示转换 由灯珠颜色转换到缓存
-void WS2812_Change(Display_msg_t* data)
-{
-    unsigned int j = 0;
-
-    for(int k = 0;k < RGB_KEY;k++)
-    {
-        for(int b = 0;b < RGB_BAR;b++)
-        {
-            for (int i = 0; i < 8; i++)
-            {
-                data->buff[(j * 24) + 7 - i]  = (((data->date[k][b].G >>i)&0x01) ? WS2812_HighLevel : WS2812_LowLevel)>>1;
-                data->buff[(j * 24) + 15 - i] = (((data->date[k][b].R >>i)&0x01) ? WS2812_HighLevel : WS2812_LowLevel)>>1;
-                data->buff[(j * 24) + 23 - i] = (((data->date[k][b].B >>i)&0x01) ? WS2812_HighLevel : WS2812_LowLevel)>>1;
-            }
-            j++;
-        }
-    }
-}
-
-/// @brief 显示转换 由灯珠颜色转换到缓存
 void WS2812_Change_free(unsigned char* data,WS2812_msg_t ws[RGB_KEY][RGB_BAR])
 {
     unsigned int j = 0;

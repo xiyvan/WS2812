@@ -285,35 +285,119 @@ void matrix_test(Display_msg_t* display_main)
 */
 
 //WS2812_msg_t Animat_main[RGB_KEY+1][RGB_BAR];
-Picture_msg_t Animat_main;
 
 
-/// @brief 从右向左移动效果
-/// @param data 
-void slide_right_effect(WS2812_msg_t data[RGB_KEY][RGB_KEY])
+/// @brief 滚动效果
+/// @param data 颜色数据
+/// @param Animat_main 反回的图片数据
+/// @param state 滚动方向
+/// @return 是否循环完一遍
+void slide_effect(WS2812_msg_t data[RGB_KEY][RGB_KEY],Animation_msg_t* Animat_main,uint8_t state)
 {
-    static uint16_t num = 0;
-    Animat_main.trans = 99;
-    Animat_main.layer_num = 1;
 
-    // 让每列的数值都向左移动
-    for(uint8_t j = 0;j < (RGB_BAR-1); j++)
+    switch(state)
     {
-        for(uint8_t i = 0;i < RGB_KEY;i++)
+        case SLIDE_EFFECT_STATE_LEFT:
         {
-            Animat_main.rgb[i][j] = Animat_main.rgb[i][j+1];
-        }
+            // 向左边滚
+            // 让每列的数值都向左移动
+            for(uint8_t j = 0;j < (RGB_BAR-1); j++)
+            {
+                for(uint8_t i = 0;i < RGB_KEY;i++)
+                {
+                    Animat_main->date.rgb[i][j] = Animat_main->date.rgb[i][j+1];
+                }
+            }
+            // 更新最右边的一列
+            for(uint8_t i = 0;i < RGB_KEY;i++)
+            {
+                Animat_main->date.rgb[i][RGB_BAR-1] = data[i][Animat_main->num];
+            }
+
+            Animat_main->num ++;
+            if(Animat_main->num > RGB_BAR-1)
+            {
+                Animat_main->num = 0;
+                // 标记为循环完1遍
+                Animat_main->state = 1;
+            }
+            
+        }break;
+        case SLIDE_EFFECT_STATE_RIGHT:
+        {
+            // 向右滚
+            for(uint8_t j = (RGB_BAR-1);j > 0; j--)
+            {
+                for(uint8_t i = 0;i < RGB_KEY;i++)
+                {
+                    Animat_main->date.rgb[i][j] = Animat_main->date.rgb[i][j-1];
+                }
+            }
+
+            // 更新最左边的一列
+            for(uint8_t i = 0;i < RGB_KEY;i++)
+            {
+                Animat_main->date.rgb[i][0] = data[i][Animat_main->num];
+            }
+
+            Animat_main->num --;
+            if(Animat_main->num < 0)
+            {
+                Animat_main->num =  RGB_BAR-1;
+                // 标记为循环完1遍
+                Animat_main->state = 1;
+            }
+            
+        }break;
+        case SLIDE_EFFECT_STATE_UP:
+        {
+            // 向上滚
+            for(uint8_t j = 0;j < (RGB_KEY-1); j++)
+            {
+                for(uint8_t i = 0;i < RGB_BAR;i++)
+                {
+                    Animat_main->date.rgb[j][i] = Animat_main->date.rgb[j+1][i];
+                }
+            }
+
+            for(uint8_t i = 0;i < RGB_KEY;i++)
+            {
+                Animat_main->date.rgb[RGB_KEY-1][i] = data[Animat_main->num][i];
+            }
+
+            Animat_main->num ++;
+            if(Animat_main->num > RGB_KEY-1)
+            {
+                Animat_main->num = 0;
+                // 标记为循环完1遍
+                Animat_main->state = 1;
+            }
+            
+        }break;
+        case SLIDE_EFFECT_STATE_DOWN:
+        {
+            // 向下滚动
+            for(uint8_t j = (RGB_KEY-1);j > 0; j--)
+            {
+                for(uint8_t i = 0;i < RGB_BAR;i++)
+                {
+                    Animat_main->date.rgb[j][i] = Animat_main->date.rgb[j-1][i];
+                }
+            }
+
+            for(uint8_t i = 0;i < RGB_KEY;i++)
+            {
+                Animat_main->date.rgb[0][i] = data[Animat_main->num][i];
+            }
+
+            Animat_main->num --;
+            if(Animat_main->num < 0)
+            {
+                Animat_main->num = RGB_KEY-1;
+                // 标记为循环完1遍
+                Animat_main->state = 1;
+            }  
+        }break;
     }
 
-    // 更新最右边的一列
-    for(uint8_t i = 0;i < RGB_KEY;i++)
-    {
-        Animat_main.rgb[i][RGB_BAR-1] = data[i][num];
-    }
-
-    num ++;
-    if(num > RGB_BAR-1)
-    {
-        num = 0;
-    } 
 }

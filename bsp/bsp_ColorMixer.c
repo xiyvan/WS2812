@@ -27,31 +27,29 @@ void ColorMixer_two(Picture_msg_t* date1,Picture_msg_t* date2,WS2812_msg_t* back
         return ;
     }
 
-    // 判断是不是启用图层，，一点都不透明的情况下才启用图层
-    if(date1->trans == 100 || date2->trans == 100)
+    if(date1->layer_num > date2->layer_num)
     {
-        // 启用图层
-        if(date1->layer_num > date2->layer_num)
-        {
-            // 图片2的图层靠前
-            if(date2->trans == 100)
-                state = 1;
-        }
-        else
-        {
-            // 否则图片1的图层数靠前
-            if(date1->trans == 100)
-                state = 2;
-        }
+        // 如果图片 1 大的话 就让state为1 
+        state = 1;
+    }
+    else if(date1->layer_num < date2->layer_num)
+    {
+        // 图片2 大的话就让state 为 2
+        state = 2;
+    }
+    else if(date1->layer_num == date2->layer_num)
+    {
+        // 如果他们图层相同就按照等比例混色
+        state = 3;
     }
 
     if(state != 0)
     {
-        if(state == 1)
+        if(state == 2)
         {
-            for(uint16_t i = 0;i < RGB_KEY-1;i++)
+            for(uint16_t i = 0;i < RGB_KEY;i++)
             {
-                for(uint16_t j = 0;j < RGB_BAR -1;j++)
+                for(uint16_t j = 0;j < RGB_BAR;j++)
                 {
                     if(if_sameRGB(&date1->rgb[i][j],&date2->rgb[i][j]) == 1)
                     {
@@ -81,11 +79,11 @@ void ColorMixer_two(Picture_msg_t* date1,Picture_msg_t* date2,WS2812_msg_t* back
                 }
             }
         }
-        else if(state == 2)
+        else if(state == 1)
         {
-            for(uint16_t i = 0;i < RGB_KEY-1;i++)
+            for(uint16_t i = 0;i < RGB_KEY;i++)
             {
-                for(uint16_t j = 0;j < RGB_BAR -1;j++)
+                for(uint16_t j = 0;j < RGB_BAR;j++)
                 {
                     if(if_sameRGB(&date1->rgb[i][j],&date2->rgb[i][j]) == 1)
                     {
@@ -120,9 +118,9 @@ void ColorMixer_two(Picture_msg_t* date1,Picture_msg_t* date2,WS2812_msg_t* back
     // 如果没有 100% 透明度的时候
     if(state == 0)
     {
-        for(uint16_t i = 0;i < RGB_KEY-1;i++)
+        for(uint16_t i = 0;i < RGB_KEY;i++)
         {
-            for(uint16_t j = 0;j < RGB_BAR -1;j++)
+            for(uint16_t j = 0;j < RGB_BAR;j++)
             {
                 if(if_sameRGB(&date1->rgb[i][j],back) == 1)
                 {
@@ -158,10 +156,162 @@ void ColorMixer_two(Picture_msg_t* date1,Picture_msg_t* date2,WS2812_msg_t* back
     }
 }
 
+/// @brief 加背景混色
+/// @param date1 图片1
+/// @param date2 图片2
+/// @param out 输出
+void ColorMixer_two_free(Picture_msg_t* date1,Picture_msg_t* date2,Picture_msg_t* out,WS2812_msg_t* back)
+{
 
+    uint8_t state = 0;
+    // 判断输入数据合法性
+    if(date1->trans > 100 || date2->trans > 100)
+    {
+        return ;
+    }
 
+    if(date1->layer_num > date2->layer_num)
+    {
+        // 如果图片 1 大的话 就让state为1 
+        state = 1;
+    }
+    else if(date1->layer_num < date2->layer_num)
+    {
+        // 图片2 大的话就让state 为 2
+        state = 2;
+    }
+    else if(date1->layer_num == date2->layer_num)
+    {
+        // 如果他们图层相同就按照等比例混色
+        state = 3;
+    }
 
+    if(state == 1)
+    {
+        // 如果图片 1 在 2 的上面
+        for(uint16_t i = 0;i < RGB_KEY;i ++)
+        {
+            for(uint16_t j = 0;j < RGB_BAR;j++)
+            {
+                if(if_sameRGB(&date1->rgb[i][j],back) == 1)
+                {
+                    // 如果 1 为背景色的话就 直接赋值 2
+                    out->rgb[i][j].R = date2->rgb[i][j].R;
+                    out->rgb[i][j].G = date2->rgb[i][j].G;
+                    out->rgb[i][j].B = date2->rgb[i][j].B;
+                }
+                else
+                {
+                    // 如果1 不是背景色 就判断2是不是背景色
+                    if(if_sameRGB(&date2->rgb[i][j],back) == 1)
+                    {
+                        // 如果 1 不是背景色但是 2 是背景色，就直接赋值1
+                        out->rgb[i][j].R = date1->rgb[i][j].R;
+                        out->rgb[i][j].G = date1->rgb[i][j].G;
+                        out->rgb[i][j].B = date1->rgb[i][j].B;
+                    }
+                    else
+                    {
+                        // 使用Alpha混色公式 先混合 2 与 背景色
+                        float q = 1 - (float)date2->trans / 100;
+                        float p = (float)date2->trans / 100;
+                        out->rgb[i][j].R = q * back->R + p * date2->rgb[i][j].R;
+                        out->rgb[i][j].G = q * back->G + p * date2->rgb[i][j].G;
+                        out->rgb[i][j].B = q * back->B + p * date2->rgb[i][j].B;
 
+                        q = 1 - (float)date1->trans / 100;
+                        p = (float)date1->trans / 100;
+                        // 再使用Alpha公式让 1 与 混合色进行混色
+                        out->rgb[i][j].R = q * out->rgb[i][j].R + p * date1->rgb[i][j].R;
+                        out->rgb[i][j].G = q * out->rgb[i][j].G + p * date1->rgb[i][j].G;
+                        out->rgb[i][j].B = q * out->rgb[i][j].B + p * date1->rgb[i][j].B;
+                    }
+                }
+            }
+        }
+    }
+    else if(state == 2)
+    {
+        // 如果图片 2 在 1 的上面
+        for(uint16_t i = 0;i < RGB_KEY;i ++)
+        {
+            for(uint16_t j = 0;j < RGB_BAR;j++)
+            {
+                if(if_sameRGB(&date1->rgb[i][j],back) == 1)
+                {
+                    // 如果 1 为背景色的话就 直接赋值 2
+                    out->rgb[i][j].R = date2->rgb[i][j].R;
+                    out->rgb[i][j].G = date2->rgb[i][j].G;
+                    out->rgb[i][j].B = date2->rgb[i][j].B;
+                }
+                else
+                {
+                    // 如果1 不是背景色 就判断2是不是背景色
+                    if(if_sameRGB(&date2->rgb[i][j],back) == 1)
+                    {
+                        // 如果 1 不是背景色但是 2 是背景色，就直接赋值1
+                        out->rgb[i][j].R = date1->rgb[i][j].R;
+                        out->rgb[i][j].G = date1->rgb[i][j].G;
+                        out->rgb[i][j].B = date1->rgb[i][j].B;
+                    }
+                    else
+                    {
+                        // 使用Alpha混色公式 先混合 2 与 背景色
+                        float q = 1 - (float)date1->trans / 100;
+                        float p = (float)date1->trans / 100;
+                        out->rgb[i][j].R = q * back->R + p * date1->rgb[i][j].R;
+                        out->rgb[i][j].G = q * back->G + p * date1->rgb[i][j].G;
+                        out->rgb[i][j].B = q * back->B + p * date1->rgb[i][j].B;
+
+                        q = 1 - (float)date2->trans / 100;
+                        p = (float)date2->trans / 100;
+                        // 再使用Alpha公式让 1 与 混合色进行混色
+                        out->rgb[i][j].R = q * out->rgb[i][j].R + p * date2->rgb[i][j].R;
+                        out->rgb[i][j].G = q * out->rgb[i][j].G + p * date2->rgb[i][j].G;
+                        out->rgb[i][j].B = q * out->rgb[i][j].B + p * date2->rgb[i][j].B;
+                    }
+                }
+            }
+        }
+    }
+    else if(state == 3)
+    {
+        for(uint16_t i = 0;i < RGB_KEY;i++)
+        {
+            for(uint16_t j = 0;j < RGB_BAR;j++)
+            {
+                if(if_sameRGB(&date1->rgb[i][j],back) == 1)
+                {
+                    // 如果 1 为背景色的话就 直接赋值 2
+                    out->rgb[i][j].R = date2->rgb[i][j].R;
+                    out->rgb[i][j].G = date2->rgb[i][j].G;
+                    out->rgb[i][j].B = date2->rgb[i][j].B;
+                }
+                else
+                {
+                    // 如果1 不是背景色 就判断2是不是背景色
+                    if(if_sameRGB(&date2->rgb[i][j],back) == 1)
+                    {
+                        // 如果 1 不是背景色但是 2 是背景色，就直接赋值1
+                        out->rgb[i][j].R = date1->rgb[i][j].R;
+                        out->rgb[i][j].G = date1->rgb[i][j].G;
+                        out->rgb[i][j].B = date1->rgb[i][j].B;
+                    }
+                    else
+                    {
+                        // 如果两个都不是背景色的话  就开始混色处理
+                        // 计算混色系数
+                        float q = (float)date1->trans/((float)date1->trans + (float)date2->trans);
+                        float p = 1-q;
+                        out->rgb[i][j].R = date1->rgb[i][j].R * q + date2->rgb[i][j].R * p;
+                        out->rgb[i][j].G = date1->rgb[i][j].G * q + date2->rgb[i][j].G * p;
+                        out->rgb[i][j].B = date1->rgb[i][j].B * q + date2->rgb[i][j].B * p;
+                    }
+                }
+            }
+        }
+    }
+}
 
 
 

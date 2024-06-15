@@ -36,3 +36,5 @@ ws2812\display_task.o: ../bsp/bsp_Animation.h
 ws2812\display_task.o: ../bsp/bsp_ColorMixer.h
 ws2812\display_task.o: ../bsp/bsp_PixelOperation.h
 ws2812\display_task.o: ../alli/Z_math.h
+ws2812\display_task.o: ../bsp/bsp_base.h
+ws2812\display_task.o: D:\keil 5\ARM\ARMCC\Bin\..\include\string.h

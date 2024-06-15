@@ -30,7 +30,6 @@ typedef struct
 
 typedef struct 
 {
-    WS2812_msg_t date[RGB_KEY][RGB_BAR];     // 用来保存每个RGB灯珠的信息
     unsigned char buff[24 * RGB_NUM];        // 用来保存每一位要发送的数据
 }Display_msg_t;
 
@@ -46,7 +45,6 @@ typedef struct
 
 
 void Ws2812_Set(Picture_msg_t* data,unsigned char key,unsigned char bar,unsigned char R,unsigned char G,unsigned char B);
-void WS2812_Change(Display_msg_t* data);
 void Display_Show(Display_msg_t* data);
 void WS2812_Change_free(unsigned char* data,WS2812_msg_t ws[RGB_KEY][RGB_BAR]);
 
