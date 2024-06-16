@@ -19,6 +19,17 @@
 #define WS2812_HighLevel   0xFC     // 1Ты
 
 
+/// @brief 图片尺寸结构体
+typedef struct 
+{
+    unsigned short x;
+    unsigned short y;
+    unsigned short x_end;
+    unsigned short y_end;
+}PictureSize_msg_t;
+
+
+/// @brief rgb颜色结构体
 typedef struct 
 {
     unsigned char R;
@@ -27,14 +38,17 @@ typedef struct
 }WS2812_msg_t;
 
 
-
+/// @brief 屏幕缓存
 typedef struct 
 {
     unsigned char buff[24 * RGB_NUM];        // 用来保存每一位要发送的数据
 }Display_msg_t;
 
+/// @brief 图片结构体
 typedef struct
 {
+    // 保存图片的尺寸
+    PictureSize_msg_t size;
     // 图片的RGB信息
     WS2812_msg_t rgb[RGB_KEY][RGB_BAR];
     // 图片的图层数
@@ -47,5 +61,6 @@ typedef struct
 void Ws2812_Set(Picture_msg_t* data,unsigned char key,unsigned char bar,unsigned char R,unsigned char G,unsigned char B);
 void Display_Show(Display_msg_t* data);
 void WS2812_Change_free(unsigned char* data,WS2812_msg_t ws[RGB_KEY][RGB_BAR]);
+Picture_msg_t* Picture_Create(unsigned char layer_num,unsigned char trans,unsigned short x,unsigned short y,unsigned short x_end,unsigned short y_end);
 
 #endif

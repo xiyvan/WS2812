@@ -31,3 +31,6 @@ ws2812\bsp_ws2812.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
 ws2812\bsp_ws2812.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
 ws2812\bsp_ws2812.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 ws2812\bsp_ws2812.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
+ws2812\bsp_ws2812.o: D:\keil 5\ARM\ARMCC\Bin\..\include\stdlib.h
+ws2812\bsp_ws2812.o: D:\keil 5\ARM\ARMCC\Bin\..\include\string.h
+ws2812\bsp_ws2812.o: D:\keil 5\ARM\ARMCC\Bin\..\include\stdio.h

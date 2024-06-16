@@ -34,7 +34,6 @@ void Task_Star(void)
     while (1)
     {
         task_50ms();
-
     }
 }
 

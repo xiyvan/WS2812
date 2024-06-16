@@ -6,6 +6,12 @@
 #include "bsp_ws2812.h"
 #include "bsp_ColorMixer.h"
 
+
+void xiaoguo(Display_msg_t* data);
+void blink_effect(Display_msg_t* data);
+void matrix_Falling_effect(Display_msg_t* data);
+
+//***********************************************  滚动效果  ********************************************************///
 enum
 {
     SLIDE_EFFECT_STATE_LEFT,
@@ -13,7 +19,6 @@ enum
     SLIDE_EFFECT_STATE_UP,
     SLIDE_EFFECT_STATE_DOWN,
 };
-
 
 typedef struct 
 {
@@ -23,12 +28,20 @@ typedef struct
     Picture_msg_t date;
     // 用来记录是不是循环完了一遍
     unsigned char state:1;
+    // 用来记录动画的方向
+    unsigned char direction:7;
+    // 动作作用的地点
+    unsigned short x;
+    unsigned short y;
+    unsigned short x_end;
+    unsigned short y_end;
 }Animation_msg_t;
 
+void slide_effect(Picture_msg_t* data,Animation_msg_t* Animat_main);
+Animation_msg_t* SlideEffect_create(Picture_msg_t* data,unsigned char direction,unsigned short x_end,unsigned short y_end);
 
-void xiaoguo(Display_msg_t* data);
-void blink_effect(Display_msg_t* data);
-void matrix_Falling_effect(Display_msg_t* data);
-void slide_effect(WS2812_msg_t data[RGB_KEY][RGB_KEY],Animation_msg_t* Animat_main,uint8_t state);
+
+///************************************************************** endl ******************************************/
+
 
 #endif

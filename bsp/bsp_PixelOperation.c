@@ -26,6 +26,8 @@ void display_char(WS2812_msg_t* data,uint8_t* buf,uint8_t wei)
 /// @param rgb 填充颜色
 void write_rectangle_full(Picture_msg_t* date,uint16_t x,uint16_t y,uint16_t x_end,uint16_t y_end,WS2812_msg_t* rgb)
 {
+    if(date == NULL || rgb == NULL) return ;
+
     // 判断输入的数据合法性
     if((x_end - x < 0) || ((y_end - y < 0)))
     {
@@ -58,6 +60,8 @@ void write_rectangle_full(Picture_msg_t* date,uint16_t x,uint16_t y,uint16_t x_e
 /// @param wide 线宽像素
 void write_rectangle_no(Picture_msg_t* date,uint16_t x,uint16_t y,uint16_t x_end,uint16_t y_end,WS2812_msg_t* rgb,uint16_t wide)
 {
+    if(date == NULL) return;
+
     // 判断输入的数据合法性
     if((x_end - x <= 0) || ((y_end - y <= 0)))
     {

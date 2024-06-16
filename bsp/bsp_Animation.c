@@ -1,6 +1,8 @@
 
 #include "bsp_Animation.h"
 #include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 /*
 /// 旋转拖尾用
@@ -290,34 +292,34 @@ void matrix_test(Display_msg_t* display_main)
 /// @brief 滚动效果
 /// @param data 颜色数据
 /// @param Animat_main 反回的图片数据
-/// @param state 滚动方向
-/// @return 是否循环完一遍
-void slide_effect(WS2812_msg_t data[RGB_KEY][RGB_KEY],Animation_msg_t* Animat_main,uint8_t state)
+void slide_effect(Picture_msg_t* data,Animation_msg_t* Animat_main)
 {
+    // 空指针直接返回不执行
+    if(Animat_main == NULL || data == NULL) return ;
 
-    switch(state)
+    switch(Animat_main->direction)
     {
         case SLIDE_EFFECT_STATE_LEFT:
         {
             // 向左边滚
             // 让每列的数值都向左移动
-            for(uint8_t j = 0;j < (RGB_BAR-1); j++)
+            for(uint8_t j = (Animat_main->y - 1);j < (Animat_main->y_end - 1); j++)
             {
-                for(uint8_t i = 0;i < RGB_KEY;i++)
+                for(uint8_t i = (Animat_main->x - 1);i < (Animat_main->x_end);i++)
                 {
                     Animat_main->date.rgb[i][j] = Animat_main->date.rgb[i][j+1];
                 }
             }
             // 更新最右边的一列
-            for(uint8_t i = 0;i < RGB_KEY;i++)
+            for(uint8_t i = (Animat_main->x -1);i < (Animat_main->x_end);i++)
             {
-                Animat_main->date.rgb[i][RGB_BAR-1] = data[i][Animat_main->num];
+                Animat_main->date.rgb[i][Animat_main->y_end - 1] = data->rgb[i][Animat_main->num];
             }
 
             Animat_main->num ++;
-            if(Animat_main->num > RGB_BAR-1)
+            if(Animat_main->num > (data->size.y_end - 1))
             {
-                Animat_main->num = 0;
+                Animat_main->num = (data->size.y - 1);
                 // 标记为循环完1遍
                 Animat_main->state = 1;
             }
@@ -326,78 +328,111 @@ void slide_effect(WS2812_msg_t data[RGB_KEY][RGB_KEY],Animation_msg_t* Animat_ma
         case SLIDE_EFFECT_STATE_RIGHT:
         {
             // 向右滚
-            for(uint8_t j = (RGB_BAR-1);j > 0; j--)
+            for(uint8_t j = (Animat_main->y_end -1);j > (Animat_main->y -1); j--)
             {
-                for(uint8_t i = 0;i < RGB_KEY;i++)
+                for(uint8_t i = (Animat_main->x -1);i < (Animat_main->x_end);i++)
                 {
                     Animat_main->date.rgb[i][j] = Animat_main->date.rgb[i][j-1];
                 }
             }
 
             // 更新最左边的一列
-            for(uint8_t i = 0;i < RGB_KEY;i++)
+            for(uint8_t i = (Animat_main->x -1);i < (Animat_main->x_end);i++)
             {
-                Animat_main->date.rgb[i][0] = data[i][Animat_main->num];
+                Animat_main->date.rgb[i][Animat_main->y - 1] = data->rgb[i][Animat_main->num];
             }
 
             Animat_main->num --;
-            if(Animat_main->num < 0)
+            if(Animat_main->num < (data->size.y - 1))
             {
-                Animat_main->num =  RGB_BAR-1;
+                Animat_main->num = (data->size.y_end - 1);
                 // 标记为循环完1遍
                 Animat_main->state = 1;
             }
-            
         }break;
         case SLIDE_EFFECT_STATE_UP:
         {
             // 向上滚
-            for(uint8_t j = 0;j < (RGB_KEY-1); j++)
+            for(uint8_t j = (Animat_main->x -1);j < (Animat_main->x_end-1); j++)
             {
-                for(uint8_t i = 0;i < RGB_BAR;i++)
+                for(uint8_t i = (Animat_main->y -1);i < Animat_main->y_end;i++)
                 {
                     Animat_main->date.rgb[j][i] = Animat_main->date.rgb[j+1][i];
                 }
             }
 
-            for(uint8_t i = 0;i < RGB_KEY;i++)
+            for(uint8_t i = (Animat_main->x - 1);i < Animat_main->x_end;i++)
             {
-                Animat_main->date.rgb[RGB_KEY-1][i] = data[Animat_main->num][i];
+                Animat_main->date.rgb[Animat_main->x_end-1][i] = data->rgb[Animat_main->num][i];
             }
 
             Animat_main->num ++;
-            if(Animat_main->num > RGB_KEY-1)
+            if(Animat_main->num > Animat_main->x_end-1)
             {
-                Animat_main->num = 0;
+                Animat_main->num = Animat_main->x -1;
                 // 标记为循环完1遍
                 Animat_main->state = 1;
             }
-            
         }break;
         case SLIDE_EFFECT_STATE_DOWN:
         {
             // 向下滚动
-            for(uint8_t j = (RGB_KEY-1);j > 0; j--)
+            for(uint8_t j = (Animat_main->x_end - 1);j > (Animat_main->x-1); j--)
             {
-                for(uint8_t i = 0;i < RGB_BAR;i++)
+                for(uint8_t i = Animat_main->y-1;i < Animat_main->y_end;i++)
                 {
                     Animat_main->date.rgb[j][i] = Animat_main->date.rgb[j-1][i];
                 }
             }
 
-            for(uint8_t i = 0;i < RGB_KEY;i++)
+            for(uint8_t i = Animat_main->x-1;i < Animat_main->x_end;i++)
             {
-                Animat_main->date.rgb[0][i] = data[Animat_main->num][i];
+                Animat_main->date.rgb[Animat_main->x-1][i] = data->rgb[Animat_main->num][i];
             }
 
             Animat_main->num --;
-            if(Animat_main->num < 0)
+            if(Animat_main->num < Animat_main->x-1)
             {
-                Animat_main->num = RGB_KEY-1;
+                Animat_main->num =Animat_main->x_end-1;
                 // 标记为循环完1遍
                 Animat_main->state = 1;
             }  
         }break;
     }
-
 }
+
+
+
+
+/// @brief 滚动动画创建 
+/// @param direction 滚动方向
+/// @return 动画效果指针
+Animation_msg_t* SlideEffect_create(Picture_msg_t* pic,unsigned char direction,unsigned short x_end,unsigned short y_end)
+{
+    Animation_msg_t* date = (Animation_msg_t*)malloc(sizeof(Animation_msg_t));
+    if(date == NULL) return NULL;
+
+    date->x = pic->size.x;
+    date->y = pic->size.y;
+    date->x_end = x_end;
+    date->y_end = y_end;
+    date->direction = direction;
+    date->date.size.x = pic->size.x;
+    date->date.size.y = pic->size.y;
+    date->date.size.x_end = x_end;
+    date->date.size.y_end = y_end;
+    date->date.layer_num = pic->layer_num;
+    date->date.trans = pic->trans;
+    
+    return date;
+}
+
+
+/// @brief 删除动画
+/// @param date 动画指针
+void SlideEffect_Delete(Animation_msg_t* date)
+{
+    free(date);
+    date = NULL;
+}
+

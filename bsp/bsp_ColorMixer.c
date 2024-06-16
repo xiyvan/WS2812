@@ -20,6 +20,9 @@ extern Display_msg_t display_main;
 /// @param back 背景颜色
 void ColorMixer_two(Picture_msg_t* date1,Picture_msg_t* date2,WS2812_msg_t* back,Picture_msg_t* out)
 {
+    // 有空指针直接返回 不执行
+    if(date1 == NULL || date2 == NULL || back == NULL || out == NULL) return;
+
     uint8_t state = 0;
     // 判断输入数据合法性
     if(date1->trans > 100 || date2->trans > 100)
@@ -162,6 +165,8 @@ void ColorMixer_two(Picture_msg_t* date1,Picture_msg_t* date2,WS2812_msg_t* back
 /// @param out 输出
 void ColorMixer_two_free(Picture_msg_t* date1,Picture_msg_t* date2,Picture_msg_t* out,WS2812_msg_t* back)
 {
+    // 有空指针直接返回 不执行
+    if(date1 == NULL || date2 == NULL || back == NULL || out == NULL) return;
 
     uint8_t state = 0;
     // 判断输入数据合法性
@@ -195,20 +200,22 @@ void ColorMixer_two_free(Picture_msg_t* date1,Picture_msg_t* date2,Picture_msg_t
             {
                 if(if_sameRGB(&date1->rgb[i][j],back) == 1)
                 {
+                    float q = (float)date2->trans / 100;
                     // 如果 1 为背景色的话就 直接赋值 2
-                    out->rgb[i][j].R = date2->rgb[i][j].R;
-                    out->rgb[i][j].G = date2->rgb[i][j].G;
-                    out->rgb[i][j].B = date2->rgb[i][j].B;
+                    out->rgb[i][j].R = date2->rgb[i][j].R * q + (1 - q) * back->R;
+                    out->rgb[i][j].G = date2->rgb[i][j].G * q + (1 - q) * back->G;
+                    out->rgb[i][j].B = date2->rgb[i][j].B * q + (1 - q) * back->B;
                 }
                 else
                 {
                     // 如果1 不是背景色 就判断2是不是背景色
                     if(if_sameRGB(&date2->rgb[i][j],back) == 1)
                     {
+                        float q = (float)date1->trans / 100;
                         // 如果 1 不是背景色但是 2 是背景色，就直接赋值1
-                        out->rgb[i][j].R = date1->rgb[i][j].R;
-                        out->rgb[i][j].G = date1->rgb[i][j].G;
-                        out->rgb[i][j].B = date1->rgb[i][j].B;
+                        out->rgb[i][j].R = date1->rgb[i][j].R * q + (1 - q) * back->R;
+                        out->rgb[i][j].G = date1->rgb[i][j].G * q + (1 - q) * back->G;
+                        out->rgb[i][j].B = date1->rgb[i][j].B * q + (1 - q) * back->B;
                     }
                     else
                     {
@@ -240,9 +247,11 @@ void ColorMixer_two_free(Picture_msg_t* date1,Picture_msg_t* date2,Picture_msg_t
                 if(if_sameRGB(&date1->rgb[i][j],back) == 1)
                 {
                     // 如果 1 为背景色的话就 直接赋值 2
-                    out->rgb[i][j].R = date2->rgb[i][j].R;
-                    out->rgb[i][j].G = date2->rgb[i][j].G;
-                    out->rgb[i][j].B = date2->rgb[i][j].B;
+                    float q = (float)date2->trans / 100;
+                    // 如果 1 为背景色的话就 直接赋值 2
+                    out->rgb[i][j].R = date2->rgb[i][j].R * q + (1 - q) * back->R;
+                    out->rgb[i][j].G = date2->rgb[i][j].G * q + (1 - q) * back->G;
+                    out->rgb[i][j].B = date2->rgb[i][j].B * q + (1 - q) * back->B;
                 }
                 else
                 {
@@ -250,9 +259,11 @@ void ColorMixer_two_free(Picture_msg_t* date1,Picture_msg_t* date2,Picture_msg_t
                     if(if_sameRGB(&date2->rgb[i][j],back) == 1)
                     {
                         // 如果 1 不是背景色但是 2 是背景色，就直接赋值1
-                        out->rgb[i][j].R = date1->rgb[i][j].R;
-                        out->rgb[i][j].G = date1->rgb[i][j].G;
-                        out->rgb[i][j].B = date1->rgb[i][j].B;
+                        float q = (float)date1->trans / 100;
+                        // 如果 1 不是背景色但是 2 是背景色，就直接赋值1
+                        out->rgb[i][j].R = date1->rgb[i][j].R * q + (1 - q) * back->R;
+                        out->rgb[i][j].G = date1->rgb[i][j].G * q + (1 - q) * back->G;
+                        out->rgb[i][j].B = date1->rgb[i][j].B * q + (1 - q) * back->B;
                     }
                     else
                     {

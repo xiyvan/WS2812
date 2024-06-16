@@ -17,8 +17,8 @@ enum
 };
 
 
-void Write_arrow(Picture_msg_t* date,unsigned char R,unsigned char G,unsigned char B,unsigned char direction);
+void Write_arrow_5x7(Picture_msg_t* date,unsigned char R,unsigned char G,unsigned char B,unsigned char direction);
 void Write_OneChar(Picture_msg_t* date,unsigned char R,unsigned char G,unsigned char B,char t);
-void Write_OneDigitalTube(Picture_msg_t* date,unsigned char R,unsigned char G,unsigned char B,char t,uint16_t key,uint16_t bar);
+void Write_OneDigitalTube(Picture_msg_t* date,unsigned char R,unsigned char G,unsigned char B,char t,unsigned char size);
 
 #endif

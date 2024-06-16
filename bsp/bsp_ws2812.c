@@ -1,6 +1,8 @@
 
 #include "bsp_ws2812.h"
-
+#include "stdlib.h"
+#include "string.h"
+#include "stdio.h"
 
 extern SPI_HandleTypeDef hspi1;
 
@@ -56,4 +58,39 @@ void Display_Show(Display_msg_t* data)
 }
 
 
+
+/// @brief 新建一个图片
+/// @param layer_num 图层数目
+/// @param trans 透明度 1~100
+/// @param x 左上角x坐标
+/// @param y 左上角y坐标
+/// @param x_end 右下角x坐标
+/// @param y_end 右下角y坐标
+/// @return 
+Picture_msg_t* Picture_Create(unsigned char layer_num,unsigned char trans,unsigned short x,unsigned short y,unsigned short x_end,unsigned short y_end)
+{
+    // 申请内存空间
+    Picture_msg_t* date = (Picture_msg_t*)malloc(sizeof(Picture_msg_t));
+    if(date == NULL) return NULL;
+
+    // 初始化图片参数
+    date->layer_num = layer_num;
+    date->trans = trans;
+    date->size.x = x;
+    date->size.y = y;
+    date->size.x_end = x_end;
+    date->size.y_end = y_end;
+
+    // 返回结构体变量指针
+    return date;
+}
+
+
+/// @brief 删除图片
+/// @param date 图片指针
+void Picture_Delete(Picture_msg_t* date)
+{
+    free(date);
+    date = NULL;
+}
 
