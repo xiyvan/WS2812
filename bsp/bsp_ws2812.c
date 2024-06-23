@@ -32,17 +32,24 @@ void WS2812_Change_free(unsigned char* data,WS2812_msg_t ws[RGB_KEY][RGB_BAR])
 {
     unsigned int j = 0;
 
-    for(int k = 0;k < RGB_KEY;k++)
+    // 横向拼接行数
+    for(unsigned short key = 0;key < RGB_MIX_KEY;key++)
     {
-        for(int b = 0;b < RGB_BAR;b++)
+        for(int k = 0;k < RGB_KEY_ONE;k++)
         {
-            for (int i = 0; i < 8; i++)
+            // 单块板行数
+            for(int b = 0;b < RGB_BAR_ONE;b++)
             {
-                data[(j * 24) + 7 - i]  = (((ws[k][b].G >>i)&0x01) ? WS2812_HighLevel : WS2812_LowLevel)>>1;
-                data[(j * 24) + 15 - i] = (((ws[k][b].R >>i)&0x01) ? WS2812_HighLevel : WS2812_LowLevel)>>1;
-                data[(j * 24) + 23 - i] = (((ws[k][b].B >>i)&0x01) ? WS2812_HighLevel : WS2812_LowLevel)>>1;
+                // 单块板列数
+                for (int i = 0; i < 8; i++)
+                {
+                    // 灯的RGB各个位数
+                    data[(j * 24) + 7 - i]  = (((ws[k][b+key*RGB_BAR_ONE].G >>i)&0x01) ? WS2812_HighLevel : WS2812_LowLevel)>>1;
+                    data[(j * 24) + 15 - i] = (((ws[k][b+key*RGB_BAR_ONE].R >>i)&0x01) ? WS2812_HighLevel : WS2812_LowLevel)>>1;
+                    data[(j * 24) + 23 - i] = (((ws[k][b+key*RGB_BAR_ONE].B >>i)&0x01) ? WS2812_HighLevel : WS2812_LowLevel)>>1;
+                }
+                j++;
             }
-            j++;
         }
     }
 }
@@ -67,10 +74,10 @@ void Display_Show(Display_msg_t* data)
 /// @param x_end 右下角x坐标
 /// @param y_end 右下角y坐标
 /// @return 
-Picture_msg_t* Picture_Create(unsigned char layer_num,unsigned char trans,unsigned short x,unsigned short y,unsigned short x_end,unsigned short y_end)
+Picture_msg_t* Picture_Create(Picture_msg_t* date,unsigned char layer_num,unsigned char trans,unsigned short x,unsigned short y,unsigned short x_end,unsigned short y_end)
 {
     // 申请内存空间
-    Picture_msg_t* date = (Picture_msg_t*)malloc(sizeof(Picture_msg_t));
+    //Picture_msg_t* date = (Picture_msg_t*)malloc(sizeof(Picture_msg_t));
     if(date == NULL) return NULL;
 
     // 初始化图片参数

@@ -13,17 +13,14 @@ extern Display_msg_t display_main;
 volatile uint8_t task_50ms = 0;
 
 
-Picture_msg_t* one;
-Picture_msg_t two;
-Picture_msg_t out;
-Animation_msg_t* animat_main;
-Animation_msg_t animat_arro;
-Picture_msg_t* test;
 
 WS2812_msg_t ttwo;
 WS2812_msg_t back;
 
-char T = '0';
+Picture_msg_t one;
+Animation_msg_t ani_main;
+
+char t = 'A';
 
 void display_show(void)
 {
@@ -31,40 +28,37 @@ void display_show(void)
     if(n == 0)
     {
         // 初始化  这里的函数只会执行一次
-        animat_arro.date.layer_num = 2;
-        animat_arro.date.trans = 100;
         back.R = 0;
         back.G = 0;
         back.B = 0;
-        ttwo.R = 100;
+        ttwo.R = 66;
         ttwo.G = 20;
-        ttwo.B = 10;
+        ttwo.B = 150;
         // 初始化动画效果
-        test = Picture_Create(2,50,1,1,8,8);
-        one = Picture_Create(1,70,3,3,8,8);
-        write_rectangle_no(test,2,2,8,7,&ttwo,0);
-        animat_main = SlideEffect_create(one,SLIDE_EFFECT_STATE_LEFT,7,6);
-        memset(&display_main.buff,0,sizeof(display_main.buff));
+        Picture_Create(&one,1,70,2,2,8,8);
+        SlideEffect_create(&ani_main,&one,0,8,32);
     }
-
-    Write_OneDigitalTube(one,20,100,10,T,0);
-    slide_effect(one,animat_main);            // 添加动作
-    if(animat_main->state == 1)
+    Write_OneChar(&one,ttwo.R,ttwo.G,ttwo.B,t,0);
+    slide_effect(&one,&ani_main);
+    if(ani_main.state == 1)
     {
-        T ++;
-        // 设为未循环完
-        animat_main->state = 0;
+        t ++;
+        if(t > 'Z')
+        {
+            t = '0';
+        }
+        else if(t > '9' && t < 'A')
+        {
+            t = 'A';
+        }
+        ani_main.state = 0;
     }
-    if(T > '9') T = '0';
-    ColorMixer_two_free(test,&animat_main->date,&out,&back);
-    WS2812_Change_free(display_main.buff,out.rgb);
-    Display_Show(&display_main);
-    memset(one->rgb,0,sizeof(one->rgb));
 
+    WS2812_Change_free(display_main.buff,ani_main.date.rgb);
+    Display_Show(&display_main);
+    memset(&one.rgb,0,sizeof(one.rgb));
     n = 1;
 }
-
-
 
 
 

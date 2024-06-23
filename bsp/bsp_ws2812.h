@@ -7,10 +7,20 @@
 // 点阵的行数（如果是圆形的话就：行数为1 有几个灯就是几列）
 #define RGB_KEY 8
 // 点阵的列数
-#define RGB_BAR 8
+#define RGB_BAR 32
+
+// 单板行数
+#define RGB_KEY_ONE 8
+// 单板列数
+#define RGB_BAR_ONE 8
 
 // 灯珠总数
 #define RGB_NUM (RGB_KEY * RGB_BAR)
+
+// 横向拼接的块数
+#define RGB_MIX_KEY (RGB_BAR / RGB_BAR_ONE)
+// 纵向拼接的块数
+#define RGB_MIX_BAR (RGB_KEY / RGB_KEY_ONE)
 
 
 
@@ -61,6 +71,5 @@ typedef struct
 void Ws2812_Set(Picture_msg_t* data,unsigned char key,unsigned char bar,unsigned char R,unsigned char G,unsigned char B);
 void Display_Show(Display_msg_t* data);
 void WS2812_Change_free(unsigned char* data,WS2812_msg_t ws[RGB_KEY][RGB_BAR]);
-Picture_msg_t* Picture_Create(unsigned char layer_num,unsigned char trans,unsigned short x,unsigned short y,unsigned short x_end,unsigned short y_end);
-
+Picture_msg_t* Picture_Create(Picture_msg_t* date,unsigned char layer_num,unsigned char trans,unsigned short x,unsigned short y,unsigned short x_end,unsigned short y_end);
 #endif

@@ -36,3 +36,4 @@ ws2812\task_create.o: ../bsp/bsp_ws2812.h
 ws2812\task_create.o: ../bsp/bsp_Animation.h
 ws2812\task_create.o: ../bsp/bsp_ColorMixer.h
 ws2812\task_create.o: ../bsp/bsp_PixelOperation.h
+ws2812\task_create.o: ..\APP\Color_task.h

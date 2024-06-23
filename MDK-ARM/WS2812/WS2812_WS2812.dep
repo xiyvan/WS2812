@@ -1,8 +1,8 @@
 Dependencies for Project 'WS2812', Target 'WS2812': (DO NOT MODIFY !)
 CompilerVersion: 5060750::V5.06 update 6 (build 750)::.\ARMCC
-F (..\APP\Display_task.c)(0x666E9008)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../bsp -I ../alli -I ../APP-I.\RTE\_WS2812-I"D:\keil 5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\keil 5\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o ws2812\display_task.o --omf_browse ws2812\display_task.crf --depend ws2812\display_task.d)
+F (..\APP\Display_task.c)(0x6677D982)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../bsp -I ../alli -I ../APP-I.\RTE\_WS2812-I"D:\keil 5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\keil 5\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o ws2812\display_task.o --omf_browse ws2812\display_task.crf --depend ws2812\display_task.d)
 I (..\APP\Display_task.h)(0x66693575)
-I (../bsp/bsp_ws2812.h)(0x666E52DA)
+I (../bsp/bsp_ws2812.h)(0x6677A100)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x665C607F)
 I (../Core/Inc/stm32f4xx_hal_conf.h)(0x66693155)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x665C607F)
@@ -33,14 +33,14 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x665C607F)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x665C607F)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x665C607F)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x665C607F)
-I (../bsp/bsp_Animation.h)(0x666E6C70)
+I (../bsp/bsp_Animation.h)(0x6677A12E)
 I (../bsp/bsp_ColorMixer.h)(0x666C3C15)
 I (../bsp/bsp_PixelOperation.h)(0x666BCE3A)
 I (../alli/Z_math.h)(0x665DC231)
-I (../bsp/bsp_base.h)(0x666E8437)
+I (../bsp/bsp_base.h)(0x6677A788)
 I (D:\keil 5\ARM\ARMCC\include\string.h)(0x5D9AD218)
-F (..\APP\Task_create.c)(0x666E8620)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../bsp -I ../alli -I ../APP-I.\RTE\_WS2812-I"D:\keil 5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\keil 5\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o ws2812\task_create.o --omf_browse ws2812\task_create.crf --depend ws2812\task_create.d)
-I (..\APP\Task_create.h)(0x66693643)
+F (..\APP\Task_create.c)(0x6677D1D4)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../bsp -I ../alli -I ../APP-I.\RTE\_WS2812-I"D:\keil 5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\keil 5\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o ws2812\task_create.o --omf_browse ws2812\task_create.crf --depend ws2812\task_create.d)
+I (..\APP\Task_create.h)(0x6677CDFE)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x665C607F)
 I (../Core/Inc/stm32f4xx_hal_conf.h)(0x66693155)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x665C607F)
@@ -72,12 +72,46 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x665C607F)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x665C607F)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x665C607F)
 I (..\APP\Display_task.h)(0x66693575)
-I (../bsp/bsp_ws2812.h)(0x666E52DA)
-I (../bsp/bsp_Animation.h)(0x666E6C70)
+I (../bsp/bsp_ws2812.h)(0x6677A100)
+I (../bsp/bsp_Animation.h)(0x6677A12E)
 I (../bsp/bsp_ColorMixer.h)(0x666C3C15)
 I (../bsp/bsp_PixelOperation.h)(0x666BCE3A)
-F (..\bsp\bsp_ws2812.c)(0x666E5801)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../bsp -I ../alli -I ../APP-I.\RTE\_WS2812-I"D:\keil 5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\keil 5\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o ws2812\bsp_ws2812.o --omf_browse ws2812\bsp_ws2812.crf --depend ws2812\bsp_ws2812.d)
-I (..\bsp\bsp_ws2812.h)(0x666E52DA)
+I (..\APP\Color_task.h)(0x6677CD5A)
+F (..\APP\Color_task.c)(0x6677D1E0)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../bsp -I ../alli -I ../APP-I.\RTE\_WS2812-I"D:\keil 5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\keil 5\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o ws2812\color_task.o --omf_browse ws2812\color_task.crf --depend ws2812\color_task.d)
+I (..\APP\Color_task.h)(0x6677CD5A)
+I (../bsp/bsp_ws2812.h)(0x6677A100)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x665C607F)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x66693155)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x665C607F)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x665C607F)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x665C607C)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h)(0x665C607C)
+I (../Drivers/CMSIS/Include/core_cm4.h)(0x665C607F)
+I (D:\keil 5\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x665C607E)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x665C607E)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x665C607E)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x665C607F)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h)(0x665C607C)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x665C607F)
+I (D:\keil 5\ARM\ARMCC\include\stddef.h)(0x5D9AD218)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h)(0x665C607F)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h)(0x665C607F)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h)(0x665C607F)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h)(0x665C607F)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h)(0x665C607F)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h)(0x665C607F)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x665C607F)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x665C607F)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x665C607F)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x665C607F)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x665C607F)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x665C607F)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x665C607F)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x665C607F)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x665C607F)
+F (..\bsp\bsp_ws2812.c)(0x6677A112)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../bsp -I ../alli -I ../APP-I.\RTE\_WS2812-I"D:\keil 5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\keil 5\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o ws2812\bsp_ws2812.o --omf_browse ws2812\bsp_ws2812.crf --depend ws2812\bsp_ws2812.d)
+I (..\bsp\bsp_ws2812.h)(0x6677A100)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x665C607F)
 I (../Core/Inc/stm32f4xx_hal_conf.h)(0x66693155)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x665C607F)
@@ -143,11 +177,11 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x665C607F)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x665C607F)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x665C607F)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x665C607F)
-I (..\bsp\bsp_ws2812.h)(0x666E52DA)
+I (..\bsp\bsp_ws2812.h)(0x6677A100)
 I (../alli/Z_math.h)(0x665DC231)
-F (..\bsp\bsp_Animation.c)(0x666E80A9)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../bsp -I ../alli -I ../APP-I.\RTE\_WS2812-I"D:\keil 5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\keil 5\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o ws2812\bsp_animation.o --omf_browse ws2812\bsp_animation.crf --depend ws2812\bsp_animation.d)
-I (..\bsp\bsp_Animation.h)(0x666E6C70)
-I (..\bsp\bsp_ws2812.h)(0x666E52DA)
+F (..\bsp\bsp_Animation.c)(0x6677A121)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../bsp -I ../alli -I ../APP-I.\RTE\_WS2812-I"D:\keil 5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\keil 5\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o ws2812\bsp_animation.o --omf_browse ws2812\bsp_animation.crf --depend ws2812\bsp_animation.d)
+I (..\bsp\bsp_Animation.h)(0x6677A12E)
+I (..\bsp\bsp_ws2812.h)(0x6677A100)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x665C607F)
 I (../Core/Inc/stm32f4xx_hal_conf.h)(0x66693155)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x665C607F)
@@ -183,9 +217,9 @@ I (..\bsp\bsp_PixelOperation.h)(0x666BCE3A)
 I (D:\keil 5\ARM\ARMCC\include\string.h)(0x5D9AD218)
 I (D:\keil 5\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
 I (D:\keil 5\ARM\ARMCC\include\stdlib.h)(0x5D9AD21A)
-F (..\bsp\bsp_base.c)(0x666E85FF)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../bsp -I ../alli -I ../APP-I.\RTE\_WS2812-I"D:\keil 5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\keil 5\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o ws2812\bsp_base.o --omf_browse ws2812\bsp_base.crf --depend ws2812\bsp_base.d)
-I (..\bsp\bsp_base.h)(0x666E8437)
-I (..\bsp\bsp_ws2812.h)(0x666E52DA)
+F (..\bsp\bsp_base.c)(0x6677C129)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../bsp -I ../alli -I ../APP-I.\RTE\_WS2812-I"D:\keil 5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\keil 5\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o ws2812\bsp_base.o --omf_browse ws2812\bsp_base.crf --depend ws2812\bsp_base.d)
+I (..\bsp\bsp_base.h)(0x6677A788)
+I (..\bsp\bsp_ws2812.h)(0x6677A100)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x665C607F)
 I (../Core/Inc/stm32f4xx_hal_conf.h)(0x66693155)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x665C607F)
@@ -219,7 +253,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x665C607F)
 I (..\bsp\bsp_PixelOperation.h)(0x666BCE3A)
 F (..\bsp\bsp_ColorMixer.c)(0x666E5A4D)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../bsp -I ../alli -I ../APP-I.\RTE\_WS2812-I"D:\keil 5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\keil 5\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o ws2812\bsp_colormixer.o --omf_browse ws2812\bsp_colormixer.crf --depend ws2812\bsp_colormixer.d)
 I (..\bsp\bsp_ColorMixer.h)(0x666C3C15)
-I (..\bsp\bsp_ws2812.h)(0x666E52DA)
+I (..\bsp\bsp_ws2812.h)(0x6677A100)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x665C607F)
 I (../Core/Inc/stm32f4xx_hal_conf.h)(0x66693155)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x665C607F)
@@ -253,7 +287,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x665C607F)
 I (..\bsp\bsp_PixelOperation.h)(0x666BCE3A)
 F (..\alli\Z_math.c)(0x665DD4AC)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../bsp -I ../alli -I ../APP-I.\RTE\_WS2812-I"D:\keil 5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\keil 5\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o ws2812\z_math.o --omf_browse ws2812\z_math.crf --depend ws2812\z_math.d)
 I (..\alli\Z_math.h)(0x665DC231)
-F (startup_stm32f407xx.s)(0x666E769C)(--cpu Cortex-M4.fp.sp -g --apcs=interwork -I.\RTE\_WS2812-I"D:\keil 5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\keil 5\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include"--pd "__UVISION_VERSION SETA 538" --pd "_RTE_ SETA 1" --pd "STM32F407xx SETA 1" --pd "_RTE_ SETA 1"--list startup_stm32f407xx.lst --xref -o ws2812\startup_stm32f407xx.o --depend ws2812\startup_stm32f407xx.d)
+F (startup_stm32f407xx.s)(0x6676D1BB)(--cpu Cortex-M4.fp.sp -g --apcs=interwork -I.\RTE\_WS2812-I"D:\keil 5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\keil 5\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include"--pd "__UVISION_VERSION SETA 538" --pd "_RTE_ SETA 1" --pd "STM32F407xx SETA 1" --pd "_RTE_ SETA 1"--list startup_stm32f407xx.lst --xref -o ws2812\startup_stm32f407xx.o --depend ws2812\startup_stm32f407xx.d)
 F (../Core/Src/main.c)(0x66694DCE)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../bsp -I ../alli -I ../APP-I.\RTE\_WS2812-I"D:\keil 5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\keil 5\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o ws2812\main.o --omf_browse ws2812\main.crf --depend ws2812\main.d)
 I (../Core/Inc/main.h)(0x66629254)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x665C607F)
@@ -290,12 +324,13 @@ I (../Core/Inc/dma.h)(0x66694DCD)
 I (../Core/Inc/spi.h)(0x6662AC06)
 I (../Core/Inc/tim.h)(0x66693154)
 I (../Core/Inc/gpio.h)(0x66629253)
-I (../APP/Task_create.h)(0x66693643)
+I (../APP/Task_create.h)(0x6677CDFE)
 I (../APP/Display_task.h)(0x66693575)
-I (../bsp/bsp_ws2812.h)(0x666E52DA)
-I (../bsp/bsp_Animation.h)(0x666E6C70)
+I (../bsp/bsp_ws2812.h)(0x6677A100)
+I (../bsp/bsp_Animation.h)(0x6677A12E)
 I (../bsp/bsp_ColorMixer.h)(0x666C3C15)
 I (../bsp/bsp_PixelOperation.h)(0x666BCE3A)
+I (../APP/Color_task.h)(0x6677CD5A)
 F (../Core/Src/gpio.c)(0x66629253)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../bsp -I ../alli -I ../APP-I.\RTE\_WS2812-I"D:\keil 5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\keil 5\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o ws2812\gpio.o --omf_browse ws2812\gpio.crf --depend ws2812\gpio.d)
 I (../Core/Inc/gpio.h)(0x66629253)
 I (../Core/Inc/main.h)(0x66629254)

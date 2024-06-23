@@ -1,6 +1,7 @@
 --cpu=Cortex-M4.fp.sp
 "ws2812\display_task.o"
 "ws2812\task_create.o"
+"ws2812\color_task.o"
 "ws2812\bsp_ws2812.o"
 "ws2812\bsp_pixeloperation.o"
 "ws2812\bsp_animation.o"

@@ -15,11 +15,11 @@ extern TIM_HandleTypeDef htim3;
 ///************************************** 任务专属变量定义  ******************************* */
 
 volatile uint16_t task_delay50ms = 0;
-
+volatile uint8_t task_delay10ms = 0;
 
 ///********************************************* 函数声明  ***********************************/
 static void task_50ms(void);
-
+static void task_10ms(void);
 
 
 ///***************************************** endl*********************************************/
@@ -34,6 +34,7 @@ void Task_Star(void)
     while (1)
     {
         task_50ms();
+        task_10ms();
     }
 }
 
@@ -46,6 +47,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     if(htim == (&htim3))
     {
         task_delay50ms ++;
+        task_delay10ms ++;
     }
 }
 
@@ -56,7 +58,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 /// @brief 50ms执行一次的任务
 static void task_50ms(void)
 {
-    if(task_delay50ms >= 170)
+    if(task_delay50ms >= 175)
     {
         display_show();
         task_delay50ms = 0;
@@ -64,3 +66,11 @@ static void task_50ms(void)
 }
 
 
+static void task_10ms(void)
+{
+    if(task_delay10ms >= 175)
+    {
+        Color_task();
+        task_delay10ms = 0;
+    }
+}

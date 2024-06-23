@@ -38,7 +38,7 @@ typedef struct
 }Animation_msg_t;
 
 void slide_effect(Picture_msg_t* data,Animation_msg_t* Animat_main);
-Animation_msg_t* SlideEffect_create(Picture_msg_t* data,unsigned char direction,unsigned short x_end,unsigned short y_end);
+Animation_msg_t* SlideEffect_create(Animation_msg_t* date,Picture_msg_t* pic,unsigned char direction,unsigned short x_end,unsigned short y_end);
 
 
 ///************************************************************** endl ******************************************/
