@@ -12,6 +12,7 @@ void blink_effect(Display_msg_t* data);
 void matrix_Falling_effect(Display_msg_t* data);
 
 //***********************************************  滚动效果  ********************************************************///
+/// 动画方向
 enum
 {
     SLIDE_EFFECT_STATE_LEFT,
@@ -39,6 +40,21 @@ typedef struct
 
 void slide_effect(Picture_msg_t* data,Animation_msg_t* Animat_main);
 Animation_msg_t* SlideEffect_create(Animation_msg_t* date,Picture_msg_t* pic,unsigned char direction,unsigned short x_end,unsigned short y_end);
+
+
+///*********************************************** 坠落（入场）效果 ****************************************/
+typedef struct 
+{
+    // 动作总信息
+    Animation_msg_t animation;
+    // 用来保存第飘落中的第几次移动
+    unsigned char state:1;
+    // 记录飘落进度
+    unsigned char num:7;
+}Anima_drifting_msg_t;
+
+void Animation_drifting_effect(Anima_drifting_msg_t* date,Picture_msg_t* pic);
+void Animation_drifting_effectCreate(Anima_drifting_msg_t* date,Picture_msg_t* pic,unsigned char direction,unsigned short x_end,unsigned short y_end);
 
 
 ///************************************************************** endl ******************************************/

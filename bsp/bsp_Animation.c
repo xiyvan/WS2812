@@ -286,8 +286,7 @@ void matrix_test(Display_msg_t* display_main)
 
 */
 
-//WS2812_msg_t Animat_main[RGB_KEY+1][RGB_BAR];
-
+///**************************************************  滚动效果  ****************************************************/
 
 /// @brief 滚动效果
 /// @param data 颜色数据
@@ -428,11 +427,104 @@ Animation_msg_t* SlideEffect_create(Animation_msg_t* date,Picture_msg_t* pic,uns
 }
 
 
-/// @brief 删除动画
-/// @param date 动画指针
-void SlideEffect_Delete(Animation_msg_t* date)
+
+///**************************************************  飘落入场效果  ****************************************************/
+
+
+
+void Animation_drifting_effect(Anima_drifting_msg_t* date,Picture_msg_t* pic)
 {
-    free(date);
-    date = NULL;
+    if(date == NULL || pic == NULL) return ;
+
+
+    if(date->animation.direction == SLIDE_EFFECT_STATE_DOWN)
+    {
+        // 向下飘落
+        if(date->state == 0)
+        {
+            date->num = 0;
+            // 如果是第一次进入飘落
+            for(uint8_t i = date->animation.y - 1;i < date->animation.y_end - 1;i++)
+            {
+                date->animation.date.rgb[0][i] = pic->rgb[pic->size.x_end - date->animation.num][i];
+            }
+            // 让飘落到文字的哪一行了 +1
+            date->animation.num ++;
+            // 不是第一次飘落 置一
+            date->state = 1;
+        }
+        else
+        {
+            // 不是第一次进入飘落的话  就让每个像素点向下移动到指定位置 然后让标志位置零开启下一次飘落
+            // 判断飘子有没有成功落位
+            if(date->num >= date->animation.x_end - date->animation.num - 1)
+            {
+                // 如果落位成功就开启下一次飘落
+                date->state = 0;
+                if(date->animation.num >= date->animation.x_end - date->animation.x)
+                {
+                    // 标记为循环完毕
+                    date->animation.state = 1;
+					date->animation.num = 0;
+                }
+            }
+            else
+            {
+                // 没有落位成功
+                // 整体向下移位
+                for(uint8_t i = date->animation.x_end-1-date->animation.num;i > 0;i--)
+                {
+                    for(uint8_t j = date->animation.y-1;j < date->animation.y_end;j++)
+                    {
+                        date->animation.date.rgb[i][j] = date->animation.date.rgb[i-1][j];
+                    }
+                }
+            }
+            if(date->animation.state != 1)
+            {
+                WS2812_msg_t temp;
+                temp.B = 0;
+                temp.R = 0;
+                temp.G = 0;
+                for(uint8_t j = date->animation.y-1;j < date->animation.y_end;j++)
+                {
+                    date->animation.date.rgb[0][j] = temp;
+                }
+            }
+
+			date->num ++;
+        }
+    }
 }
+
+
+
+/// @brief 初始化飘落动画
+/// @param date 飘落动画结构体变量指针
+/// @param pic 图片指针
+/// @param direction 飘落方向
+/// @param x_end 动画结束的坐标
+/// @param y_end 动画结束的坐标
+/// @note 动画继承图片的初始坐标、图层号与透明度
+void Animation_drifting_effectCreate(Anima_drifting_msg_t* date,Picture_msg_t* pic,unsigned char direction,unsigned short x_end,unsigned short y_end)
+{
+    if(date == NULL || pic == NULL) return ;
+
+    date->animation.x = pic->size.x;
+    date->animation.y = pic->size.y;
+    date->animation.x_end = x_end;
+    date->animation.y_end = y_end;
+    date->animation.direction = direction;
+    date->animation.date.size.x = pic->size.x;
+    date->animation.date.size.y = pic->size.y;
+    date->animation.date.size.x_end = x_end;
+    date->animation.date.size.y_end = y_end;
+    date->animation.date.layer_num = pic->layer_num;
+    date->animation.date.trans = pic->trans;
+    date->state = 0;
+    date->animation.num = 0;
+    date->animation.state = 0;
+
+}
+
 

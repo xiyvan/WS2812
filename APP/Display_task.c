@@ -18,9 +18,10 @@ WS2812_msg_t ttwo;
 WS2812_msg_t back;
 
 Picture_msg_t one;
-Animation_msg_t ani_main;
+Picture_msg_t two;
+Picture_msg_t out;
+Anima_drifting_msg_t ani_main;
 
-char t = 'A';
 
 void display_show(void)
 {
@@ -35,28 +36,25 @@ void display_show(void)
         ttwo.G = 20;
         ttwo.B = 150;
         // 初始化动画效果
-        Picture_Create(&one,1,70,2,2,8,8);
-        SlideEffect_create(&ani_main,&one,0,8,32);
+        Picture_Create(&one,1,75,1,15,6,32);
+        Picture_Create(&two,2,85,3,10,6,32);
+        Picture_Create(&out,1,20,1,1,7,32);
+        Write_OneChar(&one,66,20,150,'A',0);
+        Write_OneChar(&two,66,20,150,'B',0);
+        ColorMixer_two_free(&one,&two,&out,&back);
+        Picture_Create(&one,1,75,1,5,6,32);
+        Picture_Create(&two,2,85,1,1,6,32);
+        Write_OneChar(&one,66,20,150,'C',0);
+        ColorMixer_two_free(&out,&one,&two,&back);
+        Animation_drifting_effectCreate(&ani_main,&two,SLIDE_EFFECT_STATE_DOWN,8,32);
     }
-    Write_OneChar(&one,ttwo.R,ttwo.G,ttwo.B,t,0);
-    slide_effect(&one,&ani_main);
-    if(ani_main.state == 1)
+    if(ani_main.animation.state != 1)
     {
-        t ++;
-        if(t > 'Z')
-        {
-            t = '0';
-        }
-        else if(t > '9' && t < 'A')
-        {
-            t = 'A';
-        }
-        ani_main.state = 0;
+        Animation_drifting_effect(&ani_main,&two);
     }
 
-    WS2812_Change_free(display_main.buff,ani_main.date.rgb);
+    WS2812_Change_free(display_main.buff,ani_main.animation.date.rgb);
     Display_Show(&display_main);
-    memset(&one.rgb,0,sizeof(one.rgb));
     n = 1;
 }
 
