@@ -4,32 +4,47 @@
 
 
 extern WS2812_msg_t ttwo;
+extern RTC_HandleTypeDef hrtc;
+// 边框炫彩
+WS2812_msg_t change;
 
+RTC_TimeTypeDef rtc_main;
+RTC_DateTypeDef rtc_date;
 
 void Color_task(void)
 {
-    if(ttwo.B >= 150)
+    static unsigned char num = 0;
+
+    if(num >= 5)
     {
-        if(ttwo.G >= 1)
+        if(change.B >= 150)
         {
-            ttwo.G -= 5;
-        }
-        ttwo.R += 5;
-    } 
-    if(ttwo.R >= 150)
-    {
-        ttwo.G += 5;
-        if(ttwo.B >= 1)
+            if(change.G >= 1)
+            {
+                change.G -= 2;
+            }
+            change.R += 2;
+        } 
+        if(change.R >= 150)
         {
-            ttwo.B -= 5;
+            change.G += 2;
+            if(change.B >= 1)
+            {
+                change.B -= 2;
+            }
+        } 
+        if(change.G >= 150) 
+        {
+            if(change.R >= 1)
+            {
+                change.R -= 2;
+            }
+            change.B += 2;
         }
+        num = 0;
     }
-    if(ttwo.G >= 150) 
-    {
-        if(ttwo.R >= 1)
-        {
-            ttwo.R -= 5;
-        }
-        ttwo.B += 5;
-    }
+
+    num ++;
+    HAL_RTC_GetTime(&hrtc,&rtc_main,RTC_FORMAT_BIN);
+    HAL_RTC_GetDate(&hrtc,&rtc_date,RTC_FORMAT_BIN);
 }

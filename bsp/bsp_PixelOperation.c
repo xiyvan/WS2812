@@ -4,17 +4,6 @@
 
 
 
-void display_char(WS2812_msg_t* data,uint8_t* buf,uint8_t wei)
-{
-    
-}
-
-
-
-
-
-
-
 
 
 /// @brief 矩形填充
@@ -82,6 +71,28 @@ void write_rectangle_no(Picture_msg_t* date,uint16_t x,uint16_t y,uint16_t x_end
     write_rectangle_full(date,(x_end - wide),y,x_end,y_end,rgb);
 }
 
+
+
+/// @brief 矩形区域清屏函数
+/// @param date 图片结构体指针
+/// @param x 
+/// @param y 
+/// @param x_end 
+/// @param y_end 
+/// @param back 背景颜色
+void clear_rectangle(Picture_msg_t* date,unsigned char x,unsigned char y,unsigned char x_end,unsigned char y_end,WS2812_msg_t* back)
+{
+    write_rectangle_full(date,x,y,x_end,y_end,back);
+}
+
+
+
+/// @brief 全屏置零
+/// @param date 图片指针
+void clear_all(Picture_msg_t* date)
+{
+    memset(&date->rgb,0,sizeof(date->rgb));
+}
 
 
 /// @brief 画圆形

@@ -4,7 +4,7 @@
 
 #include "bsp_ws2812.h"
 
-
+#define RTC_RESET_SET 1
 
 
 

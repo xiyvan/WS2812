@@ -93,11 +93,4 @@ Picture_msg_t* Picture_Create(Picture_msg_t* date,unsigned char layer_num,unsign
 }
 
 
-/// @brief 删除图片
-/// @param date 图片指针
-void Picture_Delete(Picture_msg_t* date)
-{
-    free(date);
-    date = NULL;
-}
 
