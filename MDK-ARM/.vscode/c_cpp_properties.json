@@ -3,17 +3,21 @@
         {
             "name": "WS2812",
             "includePath": [
-                "d:\\f4_ADC_TEST\\WS2812\\Core\\Inc",
-                "d:\\f4_ADC_TEST\\WS2812\\Drivers\\STM32F4xx_HAL_Driver\\Inc",
-                "d:\\f4_ADC_TEST\\WS2812\\Drivers\\STM32F4xx_HAL_Driver\\Inc\\Legacy",
-                "d:\\f4_ADC_TEST\\WS2812\\Drivers\\CMSIS\\Device\\ST\\STM32F4xx\\Include",
-                "d:\\f4_ADC_TEST\\WS2812\\Drivers\\CMSIS\\Include",
-                "d:\\f4_ADC_TEST\\WS2812\\bsp",
-                "d:\\f4_ADC_TEST\\WS2812\\alli",
-                "d:\\f4_ADC_TEST\\WS2812\\APP",
-                "d:\\f4_ADC_TEST\\WS2812\\MDK-ARM",
-                "d:\\f4_ADC_TEST\\WS2812\\Core\\Src",
-                "d:\\f4_ADC_TEST\\WS2812\\Drivers\\STM32F4xx_HAL_Driver\\Src"
+                "c:\\Users\\韩\\Desktop\\WS2812\\Core\\Inc",
+                "c:\\Users\\韩\\Desktop\\WS2812\\Drivers\\STM32F4xx_HAL_Driver\\Inc",
+                "c:\\Users\\韩\\Desktop\\WS2812\\Drivers\\STM32F4xx_HAL_Driver\\Inc\\Legacy",
+                "c:\\Users\\韩\\Desktop\\WS2812\\Drivers\\CMSIS\\Device\\ST\\STM32F4xx\\Include",
+                "c:\\Users\\韩\\Desktop\\WS2812\\Drivers\\CMSIS\\Include",
+                "c:\\Users\\韩\\Desktop\\WS2812\\bsp",
+                "c:\\Users\\韩\\Desktop\\WS2812\\alli",
+                "c:\\Users\\韩\\Desktop\\WS2812\\APP",
+                "c:\\Users\\韩\\Desktop\\WS2812\\picture",
+                "c:\\Users\\韩\\Desktop\\WS2812\\exti_driver",
+                "C:\\MDK\\ARM\\ARMCC\\include",
+                "C:\\MDK\\ARM\\ARMCC\\include\\rw",
+                "c:\\Users\\韩\\Desktop\\WS2812\\MDK-ARM",
+                "c:\\Users\\韩\\Desktop\\WS2812\\Core\\Src",
+                "c:\\Users\\韩\\Desktop\\WS2812\\Drivers\\STM32F4xx_HAL_Driver\\Src"
             ],
             "defines": [
                 "USE_HAL_DRIVER",

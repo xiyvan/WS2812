@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "modeset_task.h": "c",
+        "bsp_ws2812.h": "c",
+        "clock.h": "c",
+        "light.h": "c",
+        "modechange.h": "c",
+        "bsp_animation.h": "c",
+        "bsp_base.h": "c",
+        "temputer.h": "c",
+        "dht11_driver.h": "c"
+    }
+}

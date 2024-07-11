@@ -10,6 +10,7 @@
       <TargetName>WS2812</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
+      <pArmCC>5060750::V5.06 update 6 (build 750)::.\ARMCC</pArmCC>
       <pCCUsed>5060750::V5.06 update 6 (build 750)::.\ARMCC</pCCUsed>
       <uAC6>0</uAC6>
       <TargetOption>
@@ -340,7 +341,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F407xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../bsp;../alli;../APP</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../bsp;../alli;../APP;../picture;..\exti_driver</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -398,6 +399,11 @@
               <FileName>Color_task.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\APP\Color_task.c</FilePath>
+            </File>
+            <File>
+              <FileName>ModeSet_task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\ModeSet_task.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -955,6 +961,36 @@
               <FileName>system_stm32f4xx.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Core/Src/system_stm32f4xx.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Picture</GroupName>
+          <Files>
+            <File>
+              <FileName>Clock.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\picture\Clock.c</FilePath>
+            </File>
+            <File>
+              <FileName>Light.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\picture\Light.c</FilePath>
+            </File>
+            <File>
+              <FileName>Temputer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\picture\Temputer.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>exti_driver</GroupName>
+          <Files>
+            <File>
+              <FileName>dht11_driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\exti_driver\dht11_driver.c</FilePath>
             </File>
           </Files>
         </Group>

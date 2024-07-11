@@ -86,6 +86,32 @@ void Write_arrow_5x7(Picture_msg_t* date,unsigned char R,unsigned char G,unsigne
 }
 
 
+void Write_arrow(Picture_msg_t* date,unsigned char R,unsigned char G,unsigned char B,unsigned char direction)
+{
+    if(date == NULL) return;
+
+    if(direction == ARROW_DIRECTION_LEFT)
+    {
+        Ws2812_Set(date,date->size.x+2,date->size.y,R,G,B);
+        Ws2812_Set(date,date->size.x+1,date->size.y+1,R,G,B);
+        Ws2812_Set(date,date->size.x+3,date->size.y+1,R,G,B);
+        Ws2812_Set(date,date->size.x,date->size.y+2,R,G,B);
+        Ws2812_Set(date,date->size.x+4,date->size.y+2,R,G,B);
+    }
+    else if(direction == ARROW_DIRECTION_RIGHT)
+    {
+        Ws2812_Set(date,date->size.x,date->size.y,R,G,B);
+        Ws2812_Set(date,date->size.x+4,date->size.y,R,G,B);
+        Ws2812_Set(date,date->size.x+1,date->size.y+1,R,G,B);
+        Ws2812_Set(date,date->size.x+3,date->size.y+1,R,G,B);
+        Ws2812_Set(date,date->size.x+2,date->size.y+2,R,G,B);
+    }
+    date->size.x_end = date->size.x + 4;
+    date->size.y_end = date->size.y + 2;
+}
+
+
+
 
 /// @brief 显示一个字符  5x4 占地(初M、W外)5x5
 /// @param t 字符内容
@@ -661,6 +687,9 @@ static void Write_OneDigitalTube_fu(Picture_msg_t* date,unsigned char R,unsigned
         date->size.y_end = date->size.y + 3;
     }
 }
+
+
+
 
 
 

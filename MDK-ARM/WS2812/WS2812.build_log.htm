@@ -3,62 +3,66 @@
 <pre>
 <h1>µVision Build Log</h1>
 <h2>Tool Versions:</h2>
-IDE-Version: ¶ÃVision V5.38.0.0
-Copyright (C) 2022 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: 1 π¬√Œ“ª, 2, LIC=WHYH9-4EUSM-KP8ZY-IMQBK-ABNKB-S2EEK
+IDE-Version: ¶ÃVision V5.40.0.0
+Copyright (C) 2024 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: 1 2, 3, LIC=GMZI6-DZM7T-9U84U-SFZKK-FF88X-37IUG
  
 Tool Versions:
-Toolchain:       MDK-ARM Plus  Version: 5.38.0.0
-Toolchain Path:  D:\keil 5\ARM\ARMCC\Bin
+Toolchain:       MDK-ARM Plus  Version: 5.40.0.3
+Toolchain Path:  C:\MDK\ARM\ARMCC\Bin
 C Compiler:      Armcc.exe V5.06 update 6 (build 750)
 Assembler:       Armasm.exe V5.06 update 6 (build 750)
 Linker/Locator:  ArmLink.exe V5.06 update 6 (build 750)
 Library Manager: ArmAr.exe V5.06 update 6 (build 750)
 Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
-CPU DLL:         SARMCM3.DLL V5.38.0.0
+CPU DLL:         SARMCM3.DLL V5.40.0.3
 Dialog DLL:      DCM.DLL V1.17.5.0
-Target DLL:      CMSIS_AGDI.dll V1.33.15.0
+Target DLL:      CMSIS_AGDI.dll V1.33.18.0
 Dialog DLL:      TCM.DLL V1.56.4.0
  
 <h2>Project:</h2>
-d:\f4_ADC_TEST\WS2812\MDK-ARM\WS2812.uvprojx
-Project File Date:  06/26/2024
+c:\Users\∫´\Desktop\WS2812\MDK-ARM\WS2812.uvprojx
+Project File Date:  07/11/2024
 
 <h2>Output:</h2>
-*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\keil 5\ARM\ARMCC\Bin'
+*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\MDK\ARM\ARMCC\Bin'
 Build target 'WS2812'
-compiling Display_task.c...
-..\APP\Display_task.c(47): warning:  #223-D: function "sprintf" declared implicitly
-      sprintf(t,"%1d",rtc_main.Seconds / 10);         // ÁßíÂçÅ‰Ω?
-..\APP\Display_task.c: 1 warning, 0 errors
+compiling Temputer.c...
+..\picture\Temputer.c(26): warning:  #223-D: function "sprintf" declared implicitly
+          sprintf(Temputer_main.T,"%1d",(short)Temputer_main.temp_date.temputer / 10);                      // Ê∏©Â∫¶ÂçÅ‰Ωç
+..\picture\Temputer.c(35): warning:  #223-D: function "Write_OneChar" declared implicitly
+          Write_OneChar(&Temputer_main.date,209,59,13,Temputer_main.T[0],0);
+..\picture\Temputer.c(53): warning:  #223-D: function "clear_all" declared implicitly
+          clear_all(&Temputer_main.date.rgb);
+..\picture\Temputer.c: 3 warnings, 0 errors
 linking...
-Program Size: Code=15920 RO-data=448 RW-data=44 ZI-data=8868  
+Program Size: Code=18432 RO-data=448 RW-data=60 ZI-data=11308  
 FromELF: creating hex file...
-"WS2812\WS2812.axf" - 0 Error(s), 1 Warning(s).
+"WS2812\WS2812.axf" - 0 Error(s), 3 Warning(s).
 
 <h2>Software Packages used:</h2>
 
 Package Vendor: ARM
-                http://www.keil.com/pack/ARM.CMSIS.5.9.0.pack
-                ARM.CMSIS.5.9.0
+                https://www.keil.com/pack/ARM.CMSIS.6.1.0.pack
+                ARM::CMSIS@6.1.0
                 CMSIS (Common Microcontroller Software Interface Standard)
-   * Component: CORE Version: 5.6.0
+   * Component: CORE Version: 6.1.0
 
 Package Vendor: Keil
                 https://www.keil.com/pack/Keil.STM32F4xx_DFP.2.17.1.pack
-                Keil.STM32F4xx_DFP.2.17.1
+                Keil::STM32F4xx_DFP@2.17.1
                 STMicroelectronics STM32F4 Series Device Support, Drivers and Examples
 
 <h2>Collection of Component include folders:</h2>
   ./RTE/_WS2812
-  D:/keil 5/ARM/CMSIS/5.9.0/CMSIS/Core/Include
-  D:/keil 5/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include
+  C:/MDK_IN/ARM/CMSIS/6.1.0/CMSIS/Core/Include
+  C:/MDK_IN/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include
 
 <h2>Collection of Component Files used:</h2>
 
-   * Component: ARM::CMSIS:CORE:5.6.0
+   * Component: ARM::CMSIS:CORE@6.1.0
       Include file:  CMSIS/Core/Include/tz_context.h
-Build Time Elapsed:  00:00:03
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>
